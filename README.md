@@ -6,14 +6,22 @@ In this repo, I will be presenting a set of executable, nine-notebook course tha
 sampling, certification, and scientific validity.
 
 
-## Requirements
-numpy>=1.23
-scipy>=1.9
-matplotlib>=3.6
-autograd>=1.6
-jupyterlab>=4.0
-nbformat>=5.7
-nbconvert>=7.0
+A PINN is best understood as **constrained inference in jet space**:
+
+1. A neural network represents a continuous candidate field
+   $u_\theta:\Omega\to\mathbb R^m$.
+2. Automatic differentiation lifts every point to its derivative jet
+   $J^k u_\theta=(u_\theta,\nabla u_\theta,\ldots,\nabla^k u_\theta)$.
+3. A differential equation defines a constraint manifold
+   $F(x,J^k u)=0$.
+4. Boundary conditions, measurements, conservation laws, and residual probes
+   are different scientific instruments observing the same candidate field.
+5. Training moves one global field until its lifted graph is compatible with
+   those instruments—approximately under penalties or exactly by construction.
+
+This view reveals that a PINN is not merely “a neural network with physics in
+the loss.” It is simultaneously a trial-space method, a stochastic weighted-
+residual method, a constrained inverse problem, and a differentiable surrogate.
 
 ## Primary references
 
